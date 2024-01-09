@@ -1,0 +1,458 @@
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("./assets/fonts/NunitoSans10pt-Regular.woff2") format("woff2"),
+    url("./assets/fonts/NunitoSans10pt-Regular.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("./assets/fonts/NunitoSans10pt-Medium.woff2") format("woff2"),
+    url("./assets/fonts/NunitoSans10pt-Medium.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("./assets/fonts/NunitoSans10pt-Bold.woff2") format("woff2"),
+    url("./assets/fonts/NunitoSans10pt-Bold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --primary-text-color: #111517;
+  --secondary-text-color: #5f5f5f;
+  --body-background: #fafafa;
+  --elements-background: #ffffff;
+  --shadow-color: #dedede86;
+}
+
+:root:has(body.dark) {
+  --body-background: #202c37;
+  --elements-background: #2b3945;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #bbbaba;
+  --shadow-color: #222b37;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito Sans";
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--body-background);
+  color: var(--primary-text-color);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 70px;
+  background-color: var(--elements-background);
+  box-shadow: 0px 0px 2px 3px var(--shadow-color);
+}
+
+.button {
+  text-decoration: none;
+  background-color: var(--elements-background);
+  color: var(--secondary-text-color);
+  margin: 30px 0 70px 0;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 3px var(--shadow-color);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.theme-button {
+  background-color: transparent;
+  color: currentColor;
+  outline: none;
+  border: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  padding-left: 22px;
+}
+
+.theme-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(50% - 7.5px);
+  background: url(./assets/icons/moon-outline.svg) center center/cover no-repeat;
+  width: 15px;
+  height: 15px;
+}
+
+body.dark .theme-button::before {
+  background: url(./assets/icons/moon.svg) center center/cover no-repeat;
+}
+
+.container {
+  min-height: calc(100vh - 113px);
+  padding: 40px 70px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.search-input__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 2px 3px var(--shadow-color);
+  padding-left: 20px;
+  border-radius: 5px;
+  background-color: var(--elements-background);
+}
+
+.search-input__wrapper img {
+  opacity: 0.6;
+}
+
+body.dark .search-input__wrapper img {
+  filter: invert(1);
+}
+
+.search-input {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+  background-color: transparent;
+  color: var(--primary-text-color);
+  font-size: 15px;
+  position: relative;
+  padding: 15px 10px;
+}
+
+.select-filter__wrapper {
+  position: relative;
+  width: 170px;
+}
+
+.select-filter__wrapper::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 7px);
+  right: 15px;
+  background: url("./assets/icons/chevron-down-outline.svg");
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+}
+
+body.dark .select-filter__wrapper::after {
+  filter: invert(1);
+}
+
+.select-filter-region {
+  box-shadow: 0px 0px 2px 3px var(--shadow-color);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 300;
+  background-color: var(--elements-background);
+  color: var(--primary-text-color);
+  padding: 15px 50px 15px 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.filter-options {
+  list-style: none;
+  display: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 3px var(--shadow-color);
+  background-color: var(--elements-background);
+  width: 170px;
+  position: absolute;
+  padding: 10px 0;
+  top: 53px;
+  z-index: 5;
+}
+
+.filter-options.opened {
+  display: block;
+}
+
+.filter-options li {
+  padding: 3px 20px;
+  cursor: pointer;
+}
+
+.filter-options li:hover {
+  background-color: #f2f1f1;
+}
+
+body.dark .filter-options li:hover {
+  background-color: var(--body-background);
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  min-height: calc(100vh - 313px);
+  width: 100%;
+  position: relative;
+}
+
+.loading-data {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card {
+  text-decoration: none;
+  box-shadow: 0px 0px 2px 5px var(--shadow-color);
+  border-radius: 5px;
+  overflow: hidden;
+  color: currentColor;
+  background-color: var(--elements-background);
+  height: 380px;
+  width: calc(25% - 45px);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-image {
+  display: flex;
+}
+
+.card-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 170px;
+}
+
+.card-details {
+  padding: 25px 20px 10px 25px;
+}
+
+.card-name {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.card p {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.card p span {
+  color: var(--secondary-text-color);
+}
+
+/* Countery Page CSS */
+
+.back-button img {
+  margin-right: 5px;
+}
+
+body.dark .back-button img {
+  filter: invert(1);
+}
+
+.country-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px 90px;
+  align-items: center;
+  width: 100%;
+}
+
+.country-image img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  display: block;
+}
+
+.country-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-block: 60px;
+}
+
+.country-info-blocks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.country-info-block {
+  list-style: none;
+}
+
+.country-info-block li {
+  color: var(--primary-text-color);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.country-info-block li span {
+  color: var(--secondary-text-color);
+}
+
+.border-countries-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.border-countries {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  height: 32px;
+  width: 75%;
+}
+
+.border-country-btn {
+  margin: 0;
+  padding: 5px 20px;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 73px);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .card {
+    width: calc(33% - 38px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: calc(50% - 30px);
+  }
+
+  .country-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .country-info-blocks {
+    flex-direction: column;
+    margin: 20px 0px;
+  }
+
+  .country-info-block {
+    margin-bottom: 20px;
+  }
+
+  .border-countries-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .border-countries {
+    height: auto;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 20px 0;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .border-country-btn {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  header {
+    padding: 20px 25px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .theme-button {
+    font-size: 14px;
+  }
+
+  .search-form {
+    margin: 30px auto;
+  }
+
+  .search-input__wrapper {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .container {
+    padding: 0 25px;
+  }
+
+  .cards-container {
+    gap: 30px;
+  }
+
+  .card {
+    height: 340px;
+    width: calc(100% - 55px);
+    margin: auto;
+  }
+
+  .card-name {
+    font-size: 18px;
+  }
+
+  .card-details p {
+    font-size: 14px;
+  }
+
+  .border-countries {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .country-name {
+    font-size: 24px;
+  }
+}
