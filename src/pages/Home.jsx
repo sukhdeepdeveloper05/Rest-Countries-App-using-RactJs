@@ -13,7 +13,7 @@ const Home = ({ countriesData, isDataLoaded }) => {
     setFilteredCountries(countriesData);
     setSearchedCountries(countriesData);
 
-    return () => {};
+    return () => { };
   }, [countriesData]);
 
   const openMenuHandler = () => {
@@ -24,7 +24,7 @@ const Home = ({ countriesData, isDataLoaded }) => {
 
   const changeRegionHandler = (e) => {
     const filteredCountries = countriesData.filter((country) => {
-      country.region.includes(e.target.innerText) && return country;
+      return country.region.includes(e.target.innerText);
     });
     setFilteredCountries(filteredCountries);
     setSearchedCountries(filteredCountries);
@@ -40,7 +40,7 @@ const Home = ({ countriesData, isDataLoaded }) => {
     } else {
       setSearchedCountries(
         filteredCountries.filter((country) => {
-          country.name.common.toLowerCase().includes(inputValue) && return country;
+          return country.name.common.toLowerCase().includes(inputValue);
         })
       );
     }
@@ -84,7 +84,7 @@ const Home = ({ countriesData, isDataLoaded }) => {
             searchedCountries.map((country) => {
               return <Card country={country} key={country.name.common} />;
             })}
-            {!isDataLoaded && <CardSkeleton />}
+          {!isDataLoaded && <CardSkeleton />}
         </div>
       </main>
     </>
