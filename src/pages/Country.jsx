@@ -95,8 +95,8 @@ const Country = () => {
                         {Country}
                       </Link>
                     );
-                  }
-                 }
+                  })
+                }
               </div>
             </div>
           </div>
