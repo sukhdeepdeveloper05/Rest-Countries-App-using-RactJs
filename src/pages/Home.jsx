@@ -24,9 +24,7 @@ const Home = ({ countriesData, isDataLoaded }) => {
 
   const changeRegionHandler = (e) => {
     const filteredCountries = countriesData.filter((country) => {
-      if (country.region.includes(e.target.innerText)) {
-        return country;
-      }
+      country.region.includes(e.target.innerText) && return country;
     });
     setFilteredCountries(filteredCountries);
     setSearchedCountries(filteredCountries);
