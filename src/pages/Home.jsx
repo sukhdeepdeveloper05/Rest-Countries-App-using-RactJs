@@ -40,9 +40,7 @@ const Home = ({ countriesData, isDataLoaded }) => {
     } else {
       setSearchedCountries(
         filteredCountries.filter((country) => {
-          if (country.name.common.toLowerCase().includes(inputValue)) {
-            return country;
-          }
+          country.name.common.toLowerCase().includes(inputValue) && return country;
         })
       );
     }
