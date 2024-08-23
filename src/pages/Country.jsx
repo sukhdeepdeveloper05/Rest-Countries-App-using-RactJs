@@ -86,8 +86,7 @@ const Country = () => {
               <div className="border-countries">
                 {countryData.borders &&
                   countryData.borders.map((Country, index) => {
-                    if (index < 5) {
-                      return (
+                      return index < 5 && (
                         <Link
                           className="button border-country-btn"
                           to={`/${Country}`}
